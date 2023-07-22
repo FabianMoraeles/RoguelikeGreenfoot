@@ -13,15 +13,14 @@ public class Fondo extends World
     int count = 0;
     int spawnrate = 50;
     int spawnpoint;
+    public Player mainPlayer = new Player();
 
-    /** 
-     * Constructor for objects of class Fondo.
-     * 
-     */
+
     public Fondo()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(800, 600, 1); 
+        addObject (mainPlayer, getWidth()/2, getHeight()/2);
         
     }
     public void act(){
@@ -33,14 +32,14 @@ public class Fondo extends World
         if (count % spawnrate == 0){
             spawnpoint = Greenfoot.getRandomNumber(8);
             switch(spawnpoint){
-                case 0: addObject(new Monsters(),0,0); break;
-                case 1: addObject(new Monsters(), getWidth()/2,0); break;
-                case 2: addObject(new Monsters(), getWidth(),0); break;
-                case 3: addObject(new Monsters(), 0,getHeight()/2); break;
-                case 4: addObject(new Monsters(), getWidth()/2,getHeight()/2); break;
-                case 5: addObject(new Monsters(), 0,getHeight()); break;
-                case 6: addObject(new Monsters(), getWidth()/2,getHeight()); break;
-                case 7: addObject(new Monsters(), getWidth(),getHeight()); break;
+                case 0: addObject(new Monsters(mainPlayer),0,0); break;
+                case 1: addObject(new Monsters(mainPlayer), getWidth()/2,0); break;
+                case 2: addObject(new Monsters(mainPlayer), getWidth(),0); break;
+                case 3: addObject(new Monsters(mainPlayer), 0,getHeight()/2); break;
+                case 4: addObject(new Monsters(mainPlayer), getWidth()/2,getHeight()/2); break;
+                case 5: addObject(new Monsters(mainPlayer), 0,getHeight()); break;
+                case 6: addObject(new Monsters(mainPlayer), getWidth()/2,getHeight()); break;
+                case 7: addObject(new Monsters(mainPlayer), getWidth(),getHeight()); break;
             }
         }
     }

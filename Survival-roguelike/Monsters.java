@@ -8,20 +8,33 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Monsters extends Actor
 {
-    /**
-     * Act - do whatever the Monsters wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    public Monsters(){
+  
+    int health = 3;
+    Player player;
+    public Monsters(Player mainPlayer){
+        player = mainPlayer;
         setImage("Monster1.png");
         getImage().scale(40,40);
     }
     public void act()
     {
         MoveAround();
+        hitByProjectile();
     }
     public void MoveAround(){
         move(1);
-        turnTowards(getWorld().getWidth()/2,getWorld().getHeight()/2);
+        turnTowards(player.getX(),player.getY());
+    }
+    public void hitByProjectile(){
+        Actor projectile = getOneIntersectingObject(Proyectil.class);
+        if (projectile != null)
+        {
+            health--;
+            getWorld().removeObject(projectile);
+        }
+        if (health == 0)
+        {
+            getWorld().removeObject(this);
+        }
     }
 }
