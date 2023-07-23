@@ -8,6 +8,7 @@ public class Player extends Actor
      */
     
     int speed = 3;
+    int tiempo = 0;
     public Player(){
         setImage(new GreenfootImage(70,50));
         getImage().setColor(Color.YELLOW);
@@ -20,6 +21,8 @@ public class Player extends Actor
         turnAround();
         movement();
         FIRE();
+        youLose();
+        tiempo++;
     }
     public void turnAround(){
         if (Greenfoot.getMouseInfo() != null)
@@ -42,5 +45,14 @@ public class Player extends Actor
             proyectil.setRotation(getRotation());
     }
     }
-   
+    public void youLose(){
+        
+        if(isTouching(Monsters.class))
+        {
+            getWorld().showText("Perdiste :( - Duraste: " +(tiempo/60) + " segundos", getWorld().getWidth()/2, getWorld().getHeight()/2);
+            Greenfoot.stop();
+
+        }
+        
+    }
 }

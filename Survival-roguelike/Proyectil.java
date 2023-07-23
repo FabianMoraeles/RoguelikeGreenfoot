@@ -20,5 +20,8 @@ public class Proyectil extends Actor
     public void act()
     {
         move(10);
+        if(isAtEdge()){
+            getWorld().removeObject(this);
+        }
     }
 }
