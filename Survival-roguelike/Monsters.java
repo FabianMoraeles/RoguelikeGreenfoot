@@ -9,9 +9,11 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Monsters extends Actor
 {
   
-    int health = 3;
+    int health = 1;
     Player player;
-    public Monsters(Player mainPlayer){
+    Contador contador;
+    public Monsters(Player mainPlayer,Contador contador){
+        this.contador = contador;
         player = mainPlayer;
         setImage("Monster1.png");
         getImage().scale(40,40);
@@ -34,6 +36,7 @@ public class Monsters extends Actor
         }
         if (health == 0)
         {
+            contador.puntaje++;
             getWorld().removeObject(this);
         }
     }

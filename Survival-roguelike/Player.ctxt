@@ -11,5 +11,5 @@ comment4.target=void\ movement()
 comment5.params=
 comment5.target=void\ FIRE()
 comment6.params=
-comment6.target=void\ youLose()
+comment6.target=boolean\ golpeMounstro()
 numComments=7

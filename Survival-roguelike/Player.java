@@ -21,7 +21,7 @@ public class Player extends Actor
         turnAround();
         movement();
         FIRE();
-        youLose();
+        golpeMounstro();
         tiempo++;
     }
     public void turnAround(){
@@ -45,13 +45,15 @@ public class Player extends Actor
             proyectil.setRotation(getRotation());
     }
     }
-    public void youLose(){
+    public boolean golpeMounstro(){
         
-        if(isTouching(Monsters.class))
+        Actor monsters = getOneObjectAtOffset(0,0, Monsters.class);
+        if(monsters!=null)
         {
-            getWorld().showText("Perdiste :( - Duraste: " +(tiempo/60) + " segundos", getWorld().getWidth()/2, getWorld().getHeight()/2);
-            Greenfoot.stop();
-
+            return true;  
+        }
+        else{
+            return false;
         }
         
     }
