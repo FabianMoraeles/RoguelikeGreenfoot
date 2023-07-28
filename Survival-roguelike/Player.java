@@ -8,6 +8,7 @@ public class Player extends Actor
      */
     
     int speed = 3;
+    int tiempo = 0;
     public Player(){
         setImage(new GreenfootImage(70,50));
         getImage().setColor(Color.YELLOW);
@@ -20,6 +21,8 @@ public class Player extends Actor
         turnAround();
         movement();
         FIRE();
+        golpeMounstro();
+        tiempo++;
     }
     public void turnAround(){
         if (Greenfoot.getMouseInfo() != null)
@@ -42,5 +45,16 @@ public class Player extends Actor
             proyectil.setRotation(getRotation());
     }
     }
-   
+    public boolean golpeMounstro(){
+        
+        Actor monsters = getOneObjectAtOffset(0,0, Monsters.class);
+        if(monsters!=null)
+        {
+            return true;  
+        }
+        else{
+            return false;
+        }
+        
+    }
 }
